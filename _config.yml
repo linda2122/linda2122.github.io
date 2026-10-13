@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: '我的个人博客'
+subtitle: '记录技术、生活与成长'
+description: '我的个人博客，分享学习笔记与生活感悟'
 keywords:
 author: Linda
 # language: en

@@ -1,0 +1,44 @@
+
+/* 正文字体 */
+body {
+  font-family:
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans SC",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+/* 文章标题 */
+h1, h2, h3, h4 {
+  font-family:
+    "Noto Serif SC",
+    "Songti SC",
+    "SimSun",
+    serif;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* 文章正文段落 */
+.post-content p,
+.article-content p {
+  margin-bottom: 1.2em;
+}
+
+/* 文章列表 */
+.post-content li,
+.article-content li {
+  line-height: 1.85;
+  margin-bottom: 0.35em;
+}
+
+/* 手机屏幕 */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+}
