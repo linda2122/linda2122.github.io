@@ -6,7 +6,8 @@ tags:
 categories:
   - learning
 ---
-使用fastapi和vllm 在AutoDL平台部署Qwen2.5_0.5b大模型
+使用fastapi和vllm 在AutoDL平台部署Qwen2.5_0.5b大模型。
+
 <!-- more -->
 ## 配置及环境
 ### 1、检查python环境 
