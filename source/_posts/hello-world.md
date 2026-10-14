@@ -1,5 +1,6 @@
 ---
 title: Hello World
+date: 2026-10-13 12:23:26
 ---
 这里是摘要
 
@@ -38,5 +39,7 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 ``` bash
 $ hexo deploy
 ```
+### 图片
+![感知机结构图](/images/deep-learning/perceptron.png)
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
