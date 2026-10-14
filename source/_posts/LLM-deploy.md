@@ -41,7 +41,9 @@ Successfully installed accelerate-1.1.1 hf-xet-1.7.0 huggingface_hub-0.36.2 rege
 执行命令  
 `python -m pip check`  
 
-`python -c "import torch, transformers, huggingface_hub, tokenizers; print('torch:',torch.__version__); print('transformers:',transformers.__version__); print('hub:',huggingface_hub.__version__); print('tokenizers:',tokenizers.__version__); print('CUDA:',torch.cuda.is_available())"`
+```bash
+python -c "import torch, transformers, huggingface_hub, tokenizers; print('torch:',torch.__version__); print('transformers:',transformers.__version__); print('hub:',huggingface_hub.__version__); print('tokenizers:',tokenizers.__version__); print('CUDA:',torch.cuda.is_available())"
+```
 
 运行结果：
 
@@ -62,19 +64,22 @@ curl -fL --connect-timeout 15 \
   https://hf-mirror.com/Qwen/Qwen2.5-0.5B-Instruct/resolve/main/config.json \
   -o /tmp/qwen_config.json
 ```
-运行结果：  
+运行结果：
 
+```text
 % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current  
                                  Dload  Upload   Total   Spent    Left  Speed  
 100   256  100   256    0     0    144      0  0:00:01  0:00:01 --:--:--   144   
 100   659    0   659    0     0    339      0 --:--:--  0:00:01 --:--:--     0  
+```
 
 执行命令  
 ```bash
 head -c 200 /tmp/qwen_config.json
 echo
 ```
-运行结果：  
+运行结果：   
+``` text
   "architectures": [  
     "Qwen2ForCausalLM"  
   ],  
@@ -84,14 +89,16 @@ echo
   "hidden_act": "silu",  
   "hidden_size": 896,  
   "initializer_range":   
-
+```
 ### 2.正式下载模型文件： 
 
 执行命令  
 ```bash
 python -c "from huggingface_hub import snapshot_download; print(snapshot_download(repo_id='Qwen/Qwen2.5-0.5B-Instruct', local_dir='/root/autodl-tmp/Qwen2.5-0.5B-Instruct'))"
 ```
-运行结果：  
+运行结果： 
+
+```text
 gitattributes: 1.52kB [00:00, 126kB/s]                                                                          | 0/10 [00:00<?, ?it/s]  
 config.json: 659B [00:00, 18.0kB/s]                                                                      | 1/10 [00:01<00:13,  1.52s/it]  
 tokenizer_config.json: 7.30kB [00:00, 399kB/s]
@@ -104,7 +111,7 @@ vocab.json: 2.78MB [00:04, 614kB/s]
 model.safetensors: 100%|█████████████████████████████████████████████████████████████████████████████| 988M/988M [01:01<00:00, 16.1MB/s]
 Fetching 10 files: 100%|████████████████████████████████████████████████████████████████████████████████| 10/10 [01:03<00:00,  6.31s/it]
 /root/autodl-tmp/Qwen2.5-0.5B-Instruct███████████████████████████████████████████████████████████████| 988M/988M [01:01<00:00, 16.2MB/s]
-
+```
 **模型文件下载完成！**
 
 
@@ -233,13 +240,14 @@ cd /root/autodl-tmp
 python -m uvicorn api_server:app --host 0.0.0.0 --port 8000
 ```
 
-运行结果    
-
+运行结果      
+```text
 INFO:     Started server process [2947]  
 INFO:     Waiting for application startup.  
 INFO:     Application startup complete.  
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)  
 INFO:     127.0.0.1:52386 - "POST /v1/chat/completions HTTP/1.1" 200 OK  
+```
 
 5. 测试  
 
@@ -333,9 +341,12 @@ curl http://127.0.0.1:8000/v1/models \
   -H "Authorization: Bearer 976f48b80837956b8169deeea9da54835d3f7af92383306a0f3f49f4c178dcc4"
 ```
 
-运行结果    
+运行结果  
 
+```json
 "object":"list","data":[{"id":"Qwen2.5-0.5B-Instruct","object":"model","created":1791793078,"owned_by":"vllm","root":"/root/autodl-tmp/Qwen2.5-0.5B-Instruct","parent":null,"max_model_len":4096,"permission":[{"id":"modelperm-a162dfd17aa62f78","object":"model_permission","created":1791793078,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}  
+```
+
 如果返回模型列表，就说明 vLLM API 已经启动成功。  
 
 - 调用测试  
@@ -354,9 +365,11 @@ curl http://127.0.0.1:8000/v1/chat/completions \
     "max_tokens": 200
   }'
 ```
-运行结果  
+运行结果 
 
+```json
 {"id":"chatcmpl-9ccb019ceb5fe348","object":"chat.completion","created":1791793190,"model":"Qwen2.5-0.5B-Instruct","choices":[{"index":0,"message":{"role":"assistant","content":"我是Qwen，一个由阿里云开发的超大规模语言模型。我的名字是“Qwen”。我被设计为能够理解和生成人类语言的能力，并且在自然语言处理领域具有广泛的应用前景。\n\n我是通过深度学习和大规模预训练来构建的，旨在回答问题、创作文本以及进行对话。我可以理解多种语言，包括但不限于汉语、英语、法语等，还能处理各种主题和情境下的信息输入。我的目标是尽可能准确地提供有用的信息和支持用户的需求。\n\n此外，我还擅长于生成文学风格的文本，这让我能够在不同的上下文中创造独特的故事和内容。我对AI技术的发展非常感兴趣，并致力于推动其在各个领域的应用和发展。\n\n如果你有任何关于如何使用Qwen或想要了解更多信息的问题，随时欢迎提问！","refusal":null,"annotations":null,"audio":null,"function_call":null,"reasoning":null},"logprobs":null,"finish_reason":"stop","stop_reason":null,"token_ids":null,"routed_experts":null}],"service_tier":null,"system_fingerprint":"vllm-0.31.0-adcc3687","usage":{"prompt_tokens":36,"total_tokens":197,"completion_tokens":161,"prompt_tokens_details":null,"completion_tokens_details":null},"prompt_logprobs":null,"prompt_token_ids":null,"prompt_text":null,"kv_transfer_params":null,"ec_transfer_params":null,"metrics":null}
+```
 
 ### 对比两种方案
 当前方案：Transformers + FastAPI  
