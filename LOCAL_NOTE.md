@@ -167,6 +167,15 @@ npx hexo server
 - [x] 已完成
 ```
 
+##  Unicode 状态符号
+表格单元格中可以直接使用 Unicode 状态符号；它们是普通字符，不是可交互的复选框。键盘找到unicode符号：
+```
+win+。
+```
+✅ ☑️  ☐  ⏳  🔄  ⚠️  ❌  🚫 
+
+`- [x]` 和 `- [ ]` 是 Markdown 任务清单语法，通常不能在表格单元格中渲染成复选框；表格里请使用上面的 Unicode 符号。
+
 ## 本站设置速查
 
 - 草稿目录：`source/_drafts/`
@@ -174,3 +183,7 @@ npx hexo server
 - 文章图片资源目录：开启 `post_asset_folder: true`
 - 草稿默认不参与生成：`render_drafts: false`
 - 推送 `main` 后由 GitHub Actions 自动构建和部署。
+
+## 参考blog
+ https://percent4.github.io/
+

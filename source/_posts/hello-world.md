@@ -43,3 +43,9 @@ $ hexo deploy
 ![感知机结构图](/images/deep-learning/perceptron.png)
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+
+---
+
+| 序号 | 题目 | 提出日期 | 状态 | 完成日期 |
+| :-: | :--- | :---: | :---: | :---: |
+| 1 | 博客操作笔记 | 2026/10/13 | ✅ | 2026/10/13 |
