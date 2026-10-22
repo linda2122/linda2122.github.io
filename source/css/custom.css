@@ -14,12 +14,22 @@ body {
 /* 文章标题 */
 h1, h2, h3, h4 {
   font-family:
+  "Microsoft YaHei",
     "Noto Serif SC",
     "Songti SC",
     "SimSun",
     serif;
   line-height: 1.5;
   letter-spacing: 0.02em;
+}
+
+/* 文章列表标题使用清晰端正的黑体 */
+.index-header {
+  font-family:
+    "Microsoft YaHei",
+    "PingFang SC",
+    "Noto Sans SC",
+    sans-serif;
 }
 
 /* 文章正文段落 */
